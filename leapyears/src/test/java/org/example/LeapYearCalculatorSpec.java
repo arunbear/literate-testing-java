@@ -40,6 +40,12 @@ class LeapYearCalculatorSpec {
             assertThat(isLeapYear(year)).isFalse();
         }
 
+        @ParameterizedTest
+        @ValueSource(ints = { 2100, 1900, 100 })
+        void if_it_is_divisible_by_100_but_not_by_400(int year) {
+            assertThat(isLeapYear(year)).isFalse();
+        }
+
 
     }
 
