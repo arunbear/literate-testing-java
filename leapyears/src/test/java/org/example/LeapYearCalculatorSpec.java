@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.example.LeapYearCalculator.isLeapYear;
 
 class LeapYearCalculatorSpec {
@@ -44,6 +45,19 @@ class LeapYearCalculatorSpec {
         @ValueSource(ints = { 2100, 1900, 100 })
         void if_it_is_divisible_by_100_but_not_by_400(int year) {
             assertThat(isLeapYear(year)).isFalse();
+        }
+
+    }
+
+    @Nested
+    @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+    class A_year_is_not_supported {
+
+        @Test
+        void if_it_is_zero() {
+            assertThatExceptionOfType
+                (IllegalArgumentException.class)
+                .isThrownBy(() -> { isLeapYear(0); });
         }
 
 

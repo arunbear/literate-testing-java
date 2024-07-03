@@ -1,10 +1,13 @@
 package org.example;
 
 public class LeapYearCalculator {
-    public static boolean isLeapYear(int i) {
-        if ((i % 4 == 0) && (i % 100 != 0)) {
+    public static boolean isLeapYear(int year) {
+        if (year == 0) {
+            throw new IllegalArgumentException();
+        }
+        if ((year % 4 == 0) && (year % 100 != 0)) {
             return true;
         }
-        else return i % 400 == 0;
+        else return year % 400 == 0;
     }
 }
