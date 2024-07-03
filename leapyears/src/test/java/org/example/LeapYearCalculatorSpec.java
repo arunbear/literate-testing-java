@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 import static org.example.LeapYearCalculator.isLeapYear;
 
 class LeapYearCalculatorSpec {
@@ -51,6 +50,19 @@ class LeapYearCalculatorSpec {
 
     @Nested
     @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+    class A_year_is_supported {
+
+        @ParameterizedTest
+        @ValueSource(ints = { 1, Integer.MAX_VALUE })
+        void if_it_is_positive(int year) {
+            assertThatNoException()
+                .isThrownBy(() -> { isLeapYear(year); });
+        }
+
+    }
+
+    @Nested
+    @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
     class A_year_is_not_supported {
 
         @Test
@@ -67,7 +79,6 @@ class LeapYearCalculatorSpec {
                     (IllegalArgumentException.class)
                     .isThrownBy(() -> { isLeapYear(year); });
         }
-
 
     }
 
