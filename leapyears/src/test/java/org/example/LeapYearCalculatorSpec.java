@@ -30,4 +30,17 @@ class LeapYearCalculatorSpec {
 
     }
 
+    @Nested
+    @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+    class A_year_is_not_a_leap_year {
+
+        @ParameterizedTest
+        @ValueSource(ints = { 2022, 2019, 1999, 1 })
+        void if_it_is_not_divisible_by_4(int year) {
+            assertThat(isLeapYear(year)).isFalse();
+        }
+
+
+    }
+
 }
