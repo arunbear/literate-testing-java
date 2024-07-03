@@ -22,6 +22,12 @@ class LeapYearCalculatorSpec {
             assertThat(isLeapYear(year)).isTrue();
         }
 
+        @ParameterizedTest
+        @ValueSource(ints = { 2000, 1600, 400 })
+        void if_it_is_divisible_by_400(int year) {
+            assertThat(isLeapYear(year)).isTrue();
+        }
+
     }
 
 }
