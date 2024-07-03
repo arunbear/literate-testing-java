@@ -60,6 +60,14 @@ class LeapYearCalculatorSpec {
                 .isThrownBy(() -> { isLeapYear(0); });
         }
 
+        @ParameterizedTest
+        @ValueSource(ints = { -1, -4, -100, -400, Integer.MIN_VALUE })
+        void if_it_is_negative(int year) {
+            assertThatExceptionOfType
+                    (IllegalArgumentException.class)
+                    .isThrownBy(() -> { isLeapYear(year); });
+        }
+
 
     }
 
