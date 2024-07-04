@@ -51,4 +51,22 @@ class StackTests {
         }
 
     }
+
+    @Nested
+    @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+    class A_non_empty_stack {
+
+        @Test
+        void becomes_deeper_by_retaining_a_pushed_item_as_its_top() {
+            Stack<String> stack = new Stack<>();
+            stack.push("paper");
+
+            final String item = "rock";
+            stack.push(item);
+
+            assertThat(stack.depth()).isEqualTo(2);
+            assertThat(stack.top()).isEqualTo(item);
+        }
+
+    }
 }
