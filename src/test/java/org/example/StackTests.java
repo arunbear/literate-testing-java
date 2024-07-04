@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.example.LeapYearCalculator.isLeapYear;
 
 class StackTests {
 
@@ -20,4 +21,17 @@ class StackTests {
 
     }
 
+
+    @Nested
+    @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+    class An_empty_stack {
+
+        @Test
+        void throws_when_queried_for_its_top_item() {
+            assertThatExceptionOfType
+                (IllegalStateException.class)
+                .isThrownBy(() -> { (new Stack<>()).top(); });
+        }
+
+    }
 }
