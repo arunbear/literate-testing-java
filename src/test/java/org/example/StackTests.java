@@ -58,14 +58,38 @@ class StackTests {
 
         @Test
         void becomes_deeper_by_retaining_a_pushed_item_as_its_top() {
+          // given ->
             Stack<String> stack = new Stack<>();
             stack.push("paper");
 
             final String item = "rock";
+
+          // when ->
             stack.push(item);
 
+          // then ->
             assertThat(stack.depth()).isEqualTo(2);
             assertThat(stack.top()).isEqualTo(item);
+        }
+
+        @Test
+        void on_popping_reveals_tops_in_reverse_order_of_pushing() {
+          // given ->
+            Stack<String> stack = new Stack<>();
+            var rock = "rock";
+            var paper = "paper";
+            var scissors = "scissors";
+
+            stack.push(rock);
+            stack.push(paper);
+            stack.push(scissors);
+
+          // when -> then
+            stack.pop();
+            assertThat(stack.top()).isEqualTo(paper);
+
+            stack.pop();
+            assertThat(stack.top()).isEqualTo(rock);
         }
 
     }

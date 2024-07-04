@@ -17,7 +17,9 @@ public class Stack<T> {
     }
 
     public void pop() {
-        throw new IllegalStateException();
+        if (stack.isEmpty())
+            throw new IllegalStateException();
+        stack.removeLast();
     }
 
     public void push(T item) {
