@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.example.LeapYearCalculator.isLeapYear;
 
 class StackTests {
 
@@ -31,6 +30,13 @@ class StackTests {
             assertThatExceptionOfType
                 (IllegalStateException.class)
                 .isThrownBy(() -> { (new Stack<>()).top(); });
+        }
+
+        @Test
+        void throws_when_popped() {
+            assertThatExceptionOfType
+                (IllegalStateException.class)
+                .isThrownBy(() -> { (new Stack<>()).pop(); });
         }
 
     }

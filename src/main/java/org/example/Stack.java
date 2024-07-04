@@ -9,4 +9,8 @@ public class Stack<T> {
     public T top() {
         throw new IllegalStateException();
     }
+
+    public void pop() {
+        throw new IllegalStateException();
+    }
 }
