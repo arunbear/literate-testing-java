@@ -39,5 +39,16 @@ class StackTests {
                 .isThrownBy(() -> { (new Stack<>()).pop(); });
         }
 
+        @Test
+        void acquires_depth_by_retaining_a_pushed_item_as_its_top() {
+            Stack<String> stack = new Stack<>();
+            final String item = "rock";
+
+            stack.push(item);
+
+            assertThat(stack.depth()).isEqualTo(1);
+            assertThat(stack.top()).isEqualTo(item);
+        }
+
     }
 }
