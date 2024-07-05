@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class QueueSpecTests {
 
@@ -21,6 +22,14 @@ class QueueSpecTests {
             assertThat(
                 (new Queue<>(capacity)).capacity()
             ).isEqualTo(capacity);
+        }
+
+        @Test
+        void rejects_a_zero_bounding_capacity() {
+            assertThatExceptionOfType
+                (IllegalArgumentException.class)
+                    .isThrownBy(() -> { new Queue<>(0); });
+
         }
 
     }
