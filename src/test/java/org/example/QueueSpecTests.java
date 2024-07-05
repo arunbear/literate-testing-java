@@ -12,7 +12,15 @@ class QueueSpecTests {
 
         @Test
         void is_empty() {
-            assertThat((new Queue<>()).length()).isZero();
+            assertThat((new Queue<>(1)).length()).isZero();
+        }
+
+        @Test
+        void preserves_positive_bounding_capacity() {
+            final int capacity = 3;
+            assertThat(
+                (new Queue<>(capacity)).capacity()
+            ).isEqualTo(capacity);
         }
 
     }
