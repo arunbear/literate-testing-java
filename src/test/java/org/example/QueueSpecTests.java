@@ -64,5 +64,26 @@ class QueueSpecTests {
 
     }
 
+    @Nested
+    class A_non_empty_queue {
+
+        @Nested
+        class that_is_not_full {
+
+            @Test
+            void becomes_longer_when_value_enqueued() {
+              // given ->
+                var queue = new Queue<String>(2);
+                queue.enqueue("rock");
+                var lengthBefore = queue.length();
+              // when ->
+                queue.enqueue("paper");
+              // then ->
+                assertThat(queue.length()).isGreaterThan(lengthBefore);
+            }
+
+        }
+
+    }
 
 }
