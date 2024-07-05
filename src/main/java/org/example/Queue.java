@@ -4,7 +4,7 @@ public class Queue<T> {
     private final int capacity;
 
     public Queue(int capacity) {
-        if (capacity == 0) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException();
         }
         this.capacity = capacity;

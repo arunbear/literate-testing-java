@@ -32,6 +32,14 @@ class QueueSpecTests {
 
         }
 
+        @Test
+        void rejects_a_negative_bounding_capacity() {
+            assertThatExceptionOfType
+                (IllegalArgumentException.class)
+                    .isThrownBy(() -> { new Queue<>(-1); });
+
+        }
+
     }
 
 
