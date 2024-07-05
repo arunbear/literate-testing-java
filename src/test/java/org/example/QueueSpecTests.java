@@ -55,6 +55,13 @@ class QueueSpecTests {
 
         }
 
+        @Test
+        void becomes_non_empty_when_value_enqueued() {
+            var queue = new Queue<String>(1);
+            queue.enqueue("rock");
+            assertThat(queue.length()).isEqualTo(1);
+        }
+
     }
 
 
