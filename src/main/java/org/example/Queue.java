@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Optional;
+
 public class Queue<T> {
     private final int capacity;
 
@@ -16,5 +18,9 @@ public class Queue<T> {
 
     public int capacity() {
         return capacity;
+    }
+
+    public Optional<T> dequeue() {
+        return Optional.empty();
     }
 }
