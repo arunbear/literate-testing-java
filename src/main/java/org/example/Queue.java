@@ -23,10 +23,18 @@ public class Queue<T> {
     }
 
     public Optional<T> dequeue() {
-        return Optional.empty();
+        if (queue.isEmpty()) {
+            return Optional.empty();
+        }
+        else {
+            return Optional.of(queue.getFirst());
+        }
     }
 
     public void enqueue(T item) {
+        if (queue.size() == capacity) {
+           return;
+        }
         queue.add(item);
     }
 }

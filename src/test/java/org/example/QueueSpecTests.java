@@ -94,6 +94,24 @@ class QueueSpecTests {
             }
         }
 
+        @Nested
+        class that_is_full {
+
+            @Test
+            void ignores_further_enqueued_values() {
+              // given ->
+                var queue = new Queue<String>(1);
+                String rock = "rock";
+                queue.enqueue(rock);
+              // when ->
+                queue.enqueue("paper");
+              // then ->
+                assertThat(queue.length()).isEqualTo(1);
+                assertThat(queue.dequeue().get()).isEqualTo(rock);
+            }
+
+        }
+
     }
 
 }
