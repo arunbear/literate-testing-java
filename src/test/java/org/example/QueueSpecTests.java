@@ -124,6 +124,20 @@ class QueueSpecTests {
 
         }
 
+        @Test
+        void dequeues_values_in_order_enqueued() {
+          // given ->
+            var queue = new Queue<String>(2);
+            String rock = "rock";
+            String paper = "paper";
+
+            queue.enqueue(rock);
+            queue.enqueue(paper);
+          // when / then ->
+            assertThat(queue.dequeue().get()).isEqualTo(rock);
+            assertThat(queue.dequeue().get()).isEqualTo(paper);
+        }
+
     }
 
 }
