@@ -8,11 +8,11 @@ The tests and code are also developed [incrementally](https://github.com/arunbea
 
 ## Examples
 
-[Leap year testing](https://github.com/arunbear/literatetesting/blob/3d731698dd3512da338487646ee27ecff6a65859/leapyears/src/test/java/org/example/LeapYearCalculatorSpec.java#L13)
+[Leap year testing](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/LeapYearCalculatorSpec.java)
 
-[Stacks](https://github.com/arunbear/literatetesting/blob/ae8edc713a49db3c2e017f215ee62eeff974e715/src/test/java/org/example/StackTests.java#L14)
+[Stacks](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/StackTests.java)
 
-[Queues](https://github.com/arunbear/literatetesting/blob/ae8edc713a49db3c2e017f215ee62eeff974e715/src/test/java/org/example/QueueSpecTests.java#L14)
+[Queues](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/QueueSpecTests.java)
 
 ## See Also
 
