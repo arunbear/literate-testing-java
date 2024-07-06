@@ -3,8 +3,6 @@ package org.example;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -122,6 +120,19 @@ class QueueSpecTests {
                 assertThat(queue.length()).isLessThan(queue.capacity());
             }
 
+        }
+
+        @Test
+        void becomes_shorter_when_dequeued() {
+          // given ->
+            var queue = new Queue<String>(1);
+
+            queue.enqueue("rock");
+            var lengthBefore = queue.length();
+          // when ->
+            queue.dequeue();
+          // then ->
+            assertThat(queue.length()).isLessThan(lengthBefore);
         }
 
         @Test
