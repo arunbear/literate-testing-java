@@ -82,6 +82,16 @@ class QueueSpecTests {
                 assertThat(queue.length()).isGreaterThan(lengthBefore);
             }
 
+            @Test
+            void becomes_full_when_enqueued_up_to_capacity() {
+              // given ->
+                var queue = new Queue<String>(2);
+                queue.enqueue("rock");
+              // when ->
+                queue.enqueue("paper");
+              // then ->
+                assertThat(queue.length()).isEqualTo(queue.capacity());
+            }
         }
 
     }
