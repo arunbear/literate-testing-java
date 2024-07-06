@@ -110,6 +110,18 @@ class QueueSpecTests {
                 assertThat(queue.dequeue().get()).isEqualTo(rock);
             }
 
+            @Test
+            void becomes_non_full_when_dequeued() {
+              // given ->
+                var queue = new Queue<String>(2);
+                queue.enqueue("rock");
+                queue.enqueue("paper");
+              // when ->
+                queue.dequeue();
+              // then ->
+                assertThat(queue.length()).isLessThan(queue.capacity());
+            }
+
         }
 
     }

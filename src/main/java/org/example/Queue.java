@@ -27,7 +27,7 @@ public class Queue<T> {
             return Optional.empty();
         }
         else {
-            return Optional.of(queue.getFirst());
+            return Optional.of(queue.removeFirst());
         }
     }
 
