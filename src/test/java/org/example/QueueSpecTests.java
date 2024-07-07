@@ -1,5 +1,7 @@
 package org.example;
 
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +11,10 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class QueueSpecTests {
 
     @Nested
+    @IndicativeSentencesGeneration(
+        separator = " -> ",
+        generator = DisplayNameGenerator.ReplaceUnderscores.class
+    )
     class A_new_queue {
 
         @Test
@@ -63,6 +69,10 @@ class QueueSpecTests {
     }
 
     @Nested
+    @IndicativeSentencesGeneration(
+        separator = " -> ",
+        generator = DisplayNameGenerator.ReplaceUnderscores.class
+    )
     class A_non_empty_queue {
 
         @Nested
