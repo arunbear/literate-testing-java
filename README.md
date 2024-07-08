@@ -2,7 +2,7 @@
 These are examples of how to use naming conventions and grouping to write unit tests in a highly readable manner,
 resembling a specification so that the reader may gain a deeper understanding of the code being tested.
 
-These examples are in fact from the talk "Structure and Interpretation of Test Cases" by Kevlin Henney
+The examples here are fleshed out and runnable versions based on those described in the talk "Structure and Interpretation of Test Cases" by Kevlin Henney
 
 The tests and code are also developed [incrementally](https://github.com/arunbear/literatetesting/commits/main/) following the Test Driven Development approach.
 
