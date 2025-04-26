@@ -5,7 +5,8 @@ import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 
 class StackTests {
 
@@ -15,7 +16,7 @@ class StackTests {
 
         @Test
         void is_empty() {
-            assertThat((new Stack<>()).depth()).isZero();
+            then((new Stack<>()).depth()).isZero();
         }
 
     }
@@ -27,14 +28,14 @@ class StackTests {
 
         @Test
         void throws_when_queried_for_its_top_item() {
-            assertThatExceptionOfType
+            thenExceptionOfType
                 (IllegalStateException.class)
                 .isThrownBy(() -> { (new Stack<>()).top(); });
         }
 
         @Test
         void throws_when_popped() {
-            assertThatExceptionOfType
+            thenExceptionOfType
                 (IllegalStateException.class)
                 .isThrownBy(() -> { (new Stack<>()).pop(); });
         }
@@ -46,8 +47,8 @@ class StackTests {
 
             stack.push(item);
 
-            assertThat(stack.depth()).isEqualTo(1);
-            assertThat(stack.top()).isEqualTo(item);
+            then(stack.depth()).isEqualTo(1);
+            then(stack.top()).isEqualTo(item);
         }
 
     }
@@ -68,8 +69,8 @@ class StackTests {
             stack.push(item);
 
           // then ->
-            assertThat(stack.depth()).isEqualTo(2);
-            assertThat(stack.top()).isEqualTo(item);
+            then(stack.depth()).isEqualTo(2);
+            then(stack.top()).isEqualTo(item);
         }
 
         @Test
@@ -86,10 +87,10 @@ class StackTests {
 
           // when -> then
             stack.pop();
-            assertThat(stack.top()).isEqualTo(paper);
+            then(stack.top()).isEqualTo(paper);
 
             stack.pop();
-            assertThat(stack.top()).isEqualTo(rock);
+            then(stack.top()).isEqualTo(rock);
         }
 
     }

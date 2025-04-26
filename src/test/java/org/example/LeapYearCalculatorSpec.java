@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.BDDAssertions.*;
 import static org.example.LeapYearCalculator.isLeapYear;
 
 class LeapYearCalculatorSpec {
@@ -19,13 +19,13 @@ class LeapYearCalculatorSpec {
         @ParameterizedTest
         @ValueSource(ints = { 2004, 1984, 4 })
         void if_it_is_divisible_by_4_but_not_by_100(int year) {
-            assertThat(isLeapYear(year)).isTrue();
+            then(isLeapYear(year)).isTrue();
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 2000, 1600, 400 })
         void if_it_is_divisible_by_400(int year) {
-            assertThat(isLeapYear(year)).isTrue();
+            then(isLeapYear(year)).isTrue();
         }
 
     }
@@ -37,13 +37,13 @@ class LeapYearCalculatorSpec {
         @ParameterizedTest
         @ValueSource(ints = { 2022, 2019, 1999, 1 })
         void if_it_is_not_divisible_by_4(int year) {
-            assertThat(isLeapYear(year)).isFalse();
+            then(isLeapYear(year)).isFalse();
         }
 
         @ParameterizedTest
         @ValueSource(ints = { 2100, 1900, 100 })
         void if_it_is_divisible_by_100_but_not_by_400(int year) {
-            assertThat(isLeapYear(year)).isFalse();
+            then(isLeapYear(year)).isFalse();
         }
 
     }
@@ -55,7 +55,7 @@ class LeapYearCalculatorSpec {
         @ParameterizedTest
         @ValueSource(ints = { 1, Integer.MAX_VALUE })
         void if_it_is_positive(int year) {
-            assertThatNoException()
+            thenNoException()
                 .isThrownBy(() -> { isLeapYear(year); });
         }
 
@@ -67,7 +67,7 @@ class LeapYearCalculatorSpec {
 
         @Test
         void if_it_is_zero() {
-            assertThatExceptionOfType
+            thenExceptionOfType
                 (IllegalArgumentException.class)
                 .isThrownBy(() -> { isLeapYear(0); });
         }
@@ -75,7 +75,7 @@ class LeapYearCalculatorSpec {
         @ParameterizedTest
         @ValueSource(ints = { -1, -4, -100, -400, Integer.MIN_VALUE })
         void if_it_is_negative(int year) {
-            assertThatExceptionOfType
+            thenExceptionOfType
                     (IllegalArgumentException.class)
                     .isThrownBy(() -> { isLeapYear(year); });
         }

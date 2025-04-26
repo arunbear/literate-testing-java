@@ -5,8 +5,8 @@ import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.BDDAssertions.thenExceptionOfType;
 
 class QueueSpecTests {
 
@@ -19,20 +19,20 @@ class QueueSpecTests {
 
         @Test
         void is_empty() {
-            assertThat((new Queue<>(1)).length()).isZero();
+            then((new Queue<>(1)).length()).isZero();
         }
 
         @Test
         void preserves_positive_bounding_capacity() {
             final int capacity = 3;
-            assertThat(
+            then(
                 (new Queue<>(capacity)).capacity()
             ).isEqualTo(capacity);
         }
 
         @Test
         void rejects_a_zero_bounding_capacity() {
-            assertThatExceptionOfType
+            thenExceptionOfType
                 (IllegalArgumentException.class)
                     .isThrownBy(() -> { new Queue<>(0); });
 
@@ -40,7 +40,7 @@ class QueueSpecTests {
 
         @Test
         void rejects_a_negative_bounding_capacity() {
-            assertThatExceptionOfType
+            thenExceptionOfType
                 (IllegalArgumentException.class)
                     .isThrownBy(() -> { new Queue<>(-1); });
 
@@ -53,7 +53,7 @@ class QueueSpecTests {
 
         @Test
         void dequeues_an_empty_optional() {
-            assertThat(
+            then(
                 (new Queue<String>(1)).dequeue() )
                     .isEmpty();
 
@@ -63,7 +63,7 @@ class QueueSpecTests {
         void becomes_non_empty_when_value_enqueued() {
             var queue = new Queue<String>(1);
             queue.enqueue("rock");
-            assertThat(queue.length()).isEqualTo(1);
+            then(queue.length()).isEqualTo(1);
         }
 
     }
@@ -87,7 +87,7 @@ class QueueSpecTests {
               // when ->
                 queue.enqueue("paper");
               // then ->
-                assertThat(queue.length()).isGreaterThan(lengthBefore);
+                then(queue.length()).isGreaterThan(lengthBefore);
             }
 
             @Test
@@ -98,7 +98,7 @@ class QueueSpecTests {
               // when ->
                 queue.enqueue("paper");
               // then ->
-                assertThat(queue.length()).isEqualTo(queue.capacity());
+                then(queue.length()).isEqualTo(queue.capacity());
             }
         }
 
@@ -114,8 +114,8 @@ class QueueSpecTests {
               // when ->
                 queue.enqueue("paper");
               // then ->
-                assertThat(queue.length()).isEqualTo(1);
-                assertThat(queue.dequeue().get()).isEqualTo(rock);
+                then(queue.length()).isEqualTo(1);
+                then(queue.dequeue().get()).isEqualTo(rock);
             }
 
             @Test
@@ -127,7 +127,7 @@ class QueueSpecTests {
               // when ->
                 queue.dequeue();
               // then ->
-                assertThat(queue.length()).isLessThan(queue.capacity());
+                then(queue.length()).isLessThan(queue.capacity());
             }
 
         }
@@ -142,7 +142,7 @@ class QueueSpecTests {
           // when ->
             queue.dequeue();
           // then ->
-            assertThat(queue.length()).isLessThan(lengthBefore);
+            then(queue.length()).isLessThan(lengthBefore);
         }
 
         @Test
@@ -155,8 +155,8 @@ class QueueSpecTests {
             queue.enqueue(rock);
             queue.enqueue(paper);
           // when / then ->
-            assertThat(queue.dequeue().get()).isEqualTo(rock);
-            assertThat(queue.dequeue().get()).isEqualTo(paper);
+            then(queue.dequeue().get()).isEqualTo(rock);
+            then(queue.dequeue().get()).isEqualTo(paper);
         }
 
     }
