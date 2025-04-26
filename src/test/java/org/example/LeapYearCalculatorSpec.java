@@ -56,7 +56,7 @@ class LeapYearCalculatorSpec {
         @ValueSource(ints = { 1, Integer.MAX_VALUE })
         void if_it_is_positive(int year) {
             thenNoException()
-                .isThrownBy(() -> { isLeapYear(year); });
+                .isThrownBy(() -> isLeapYear(year));
         }
 
     }
@@ -69,7 +69,7 @@ class LeapYearCalculatorSpec {
         void if_it_is_zero() {
             thenExceptionOfType
                 (IllegalArgumentException.class)
-                .isThrownBy(() -> { isLeapYear(0); });
+                .isThrownBy(() -> isLeapYear(0));
         }
 
         @ParameterizedTest
@@ -77,7 +77,7 @@ class LeapYearCalculatorSpec {
         void if_it_is_negative(int year) {
             thenExceptionOfType
                     (IllegalArgumentException.class)
-                    .isThrownBy(() -> { isLeapYear(year); });
+                    .isThrownBy(() -> isLeapYear(year));
         }
 
     }

@@ -34,7 +34,7 @@ class QueueSpecTests {
         void rejects_a_zero_bounding_capacity() {
             thenExceptionOfType
                 (IllegalArgumentException.class)
-                    .isThrownBy(() -> { new Queue<>(0); });
+                    .isThrownBy(() -> new Queue<>(0));
 
         }
 
@@ -42,7 +42,7 @@ class QueueSpecTests {
         void rejects_a_negative_bounding_capacity() {
             thenExceptionOfType
                 (IllegalArgumentException.class)
-                    .isThrownBy(() -> { new Queue<>(-1); });
+                    .isThrownBy(() -> new Queue<>(-1));
 
         }
 

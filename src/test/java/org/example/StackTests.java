@@ -30,14 +30,14 @@ class StackTests {
         void throws_when_queried_for_its_top_item() {
             thenExceptionOfType
                 (IllegalStateException.class)
-                .isThrownBy(() -> { (new Stack<>()).top(); });
+                .isThrownBy(() -> (new Stack<>()).top());
         }
 
         @Test
         void throws_when_popped() {
             thenExceptionOfType
                 (IllegalStateException.class)
-                .isThrownBy(() -> { (new Stack<>()).pop(); });
+                .isThrownBy(() -> (new Stack<>()).pop());
         }
 
         @Test
