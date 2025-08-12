@@ -1,4 +1,5 @@
 # Literate Testing
+
 These are examples of how to use naming conventions and grouping to write unit tests in a highly readable manner,
 resembling a specification so that the reader may gain a deeper understanding of the code being tested.
 
@@ -24,7 +25,35 @@ See below for [test output](#test-output)
 
 [JUnit docs](https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-name-generator) showing these naming conventions
 
-## Test Output
+
+## SimpleStackTest Results
+
+### Given an empty stack
+- ✅ [it has depth zero](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L18-L22)
+- ✅ [it has no elements](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L24-L29)
+- ✅ [pushing makes it non empty](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L31-L36)
+- ✅ [popping is not allowed](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L38-L42)
+- ✅ [retrieving the top element is not allowed](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L44-L48)
+
+### Given any stack
+- ✅ [pushing increases depth](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L54-L59)
+- ✅ [pushing places new item on top and preserves existing items](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L61-L66)
+
+### Given a non empty stack
+- ✅ [popping returns the top element](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L72-L76)
+- ✅ [popping decreases depth by one](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L78-L83)
+- ✅ [the popped item is removed](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L85-L91)
+- ✅ [popping removes only the top item](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L93-L99)
+- ✅ [items are popped in reverse order](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L101-L107)
+- ✅ [its top item is the last pushed](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L109-L114)
+- ✅ [its list view is unmodifiable](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L116-L120)
+- ✅ [its list view contains items in insertion order](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java#L122-L126)
+
+---
+**Test Summary:** 15 tests, 15 succeeded, 0 failed, 0 skipped  
+**Source:** [SimpleStackTest.java](https://github.com/arunbear/literate-testing-java/blob/main/src/test/java/org/example/SimpleStackTest.java)
+
+## Raw Test Output
 
 ```
 % ./gradlew clean build
