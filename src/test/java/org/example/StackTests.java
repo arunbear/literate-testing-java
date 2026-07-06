@@ -16,9 +16,10 @@ class StackTests {
 
         @Test
         void is_empty() {
-            then((new Stack<>()).depth()).isZero();
+            // given
+            var aNewStack = new Stack<>();
+            then(aNewStack.depth()).isZero();
         }
-
     }
 
 
@@ -28,23 +29,29 @@ class StackTests {
 
         @Test
         void throws_when_queried_for_its_top_item() {
+            // given
+            var anEmptyStack = new Stack<>();
             thenExceptionOfType
                 (IllegalStateException.class)
-                .isThrownBy(() -> (new Stack<>()).top());
+                .isThrownBy(anEmptyStack::top);
         }
 
         @Test
         void throws_when_popped() {
+            // given
+            var anEmptyStack = new Stack<>();
             thenExceptionOfType
                 (IllegalStateException.class)
-                .isThrownBy(() -> (new Stack<>()).pop());
+                .isThrownBy(anEmptyStack::pop);
         }
 
         @Test
         void acquires_depth_by_retaining_a_pushed_item_as_its_top() {
+            // given
             Stack<String> stack = new Stack<>();
             final String item = "rock";
 
+            // when
             stack.push(item);
 
             then(stack.depth()).isEqualTo(1);
