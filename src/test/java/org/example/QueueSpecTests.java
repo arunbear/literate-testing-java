@@ -19,30 +19,36 @@ class QueueSpecTests {
 
         @Test
         void is_empty() {
-            then((new Queue<>(1)).length()).isZero();
+            // given
+            var aNewQueue = new Queue<>(1);
+            then(aNewQueue.length()).isZero();
         }
 
         @Test
         void preserves_positive_bounding_capacity() {
+            // given
             final int capacity = 3;
-            then(
-                (new Queue<>(capacity)).capacity()
-            ).isEqualTo(capacity);
+            var aNewQueue = new Queue<>(capacity);
+            then( aNewQueue.capacity() ).isEqualTo(capacity);
         }
 
         @Test
         void rejects_a_zero_bounding_capacity() {
+            // given
+            final int capacity = 0;
             thenExceptionOfType
                 (IllegalArgumentException.class)
-                    .isThrownBy(() -> new Queue<>(0));
+                    .isThrownBy(() -> new Queue<>(capacity));
 
         }
 
         @Test
         void rejects_a_negative_bounding_capacity() {
+            // given
+            final int capacity = -1;
             thenExceptionOfType
                 (IllegalArgumentException.class)
-                    .isThrownBy(() -> new Queue<>(-1));
+                    .isThrownBy(() -> new Queue<>(capacity));
 
         }
 
@@ -53,19 +59,21 @@ class QueueSpecTests {
 
         @Test
         void dequeues_an_empty_optional() {
-            then(
-                (new Queue<String>(1)).dequeue() )
-                    .isEmpty();
+            // given
+            var anEmptyQueue = new Queue<>(1);
 
+            then(anEmptyQueue.dequeue()).isEmpty();
         }
 
         @Test
         void becomes_non_empty_when_value_enqueued() {
+            // given
             var queue = new Queue<String>(1);
+
+            // when
             queue.enqueue("rock");
             then(queue.length()).isEqualTo(1);
         }
-
     }
 
     @Nested
@@ -115,7 +123,7 @@ class QueueSpecTests {
                 queue.enqueue("paper");
               // then ->
                 then(queue.length()).isEqualTo(1);
-                then(queue.dequeue().get()).isEqualTo(rock);
+                then(queue.dequeue()).isNotEmpty().get().isEqualTo(rock);
             }
 
             @Test
@@ -155,8 +163,8 @@ class QueueSpecTests {
             queue.enqueue(rock);
             queue.enqueue(paper);
           // when / then ->
-            then(queue.dequeue().get()).isEqualTo(rock);
-            then(queue.dequeue().get()).isEqualTo(paper);
+            then(queue.dequeue()).isNotEmpty().get().isEqualTo(rock);
+            then(queue.dequeue()).isNotEmpty().get().isEqualTo(paper);
         }
 
     }
