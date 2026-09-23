@@ -23,7 +23,7 @@ See below for [test output](#test-output)
 
 [Stylish Unit Tests](https://capgemini.github.io/development/unit-test-structure/)
 
-[JUnit docs](https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-name-generator) showing these naming conventions
+[JUnit docs](https://docs.junit.org/6.1.3/writing-tests/display-names.html#generator) showing these naming conventions
 
 ## Raw Test Output
 
