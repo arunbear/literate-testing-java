@@ -11,7 +11,7 @@ The tests and code are also developed [incrementally](https://github.com/arunbea
 
 [Leap year testing](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/LeapYearCalculatorSpec.java)
 
-[Stacks](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/StackTests.java)
+[Two](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/StackTests.java) [versions](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/SimpleStackTest.java) of a Stack showing different ways of naming test methods.
 
 [Queues](https://github.com/arunbear/literatetesting/blob/main/src/test/java/org/example/QueueSpecTests.java)
 
